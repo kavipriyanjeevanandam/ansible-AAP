@@ -2,8 +2,8 @@
 - name: Create a File with Ansible
   hosts: localhost # Targeting the localhost
   tasks:
-    - name: Create /tmp/example.txt
+    - name: Create example.txt
       file:
-        path: ~/example.txt
+        path: /tmp/example.txt
         state: touch
       become: true # To run the task with sudo privileges
