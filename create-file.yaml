@@ -1,9 +1,13 @@
 ---
 - name: Create a File with Ansible
-  hosts: localhost # Targeting the localhost
+  hosts: localhost
   tasks:
     - name: Create example.txt
       file:
         path: /tmp/example.txt
         state: touch
-      become: true # To run the task with sudo privileges
+      become: true
+
+    - name: Get localhost IP address
+      debug:
+        var: ansible_default_ipv4.address
