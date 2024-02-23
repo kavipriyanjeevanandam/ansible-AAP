@@ -9,9 +9,5 @@
       become: true
 
     - name: Get localhost IP address
-      shell: hostname -I
-      register: ip_address_result
-
-    - name: Display IP address
       debug:
-        var: ip_address_result.stdout
+        var: ansible_facts['default_ipv4']['address']
