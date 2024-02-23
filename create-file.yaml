@@ -1,6 +1,6 @@
 ---
 - name: Create a File with Ansible
-  hosts: AAP_VM
+  hosts: all
   tasks:
     - name: Create example.txt
       file:
