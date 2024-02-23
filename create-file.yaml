@@ -1,17 +1,9 @@
 ---
 - name: Create a File with Ansible
-  hosts: localhost
+  hosts: AAP_VM
   tasks:
     - name: Create example.txt
       file:
         path: /tmp/example.txt
         state: touch
       become: true
-
-    - name: Get localhost IP address
-      shell: ifconfig
-      register: ifconfig_result
-
-    - name: Display ifconfig output
-      debug:
-        var: ifconfig_result.stdout
