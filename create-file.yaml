@@ -10,4 +10,5 @@
 
     - name: Get localhost IP address
       debug:
-        var: ansible_facts['default_ipv4']['address']
+        msg: "The IP address of localhost is {{ ansible_facts['default_ipv4']['address'] }}"
+      when: "'default_ipv4' in ansible_facts"
