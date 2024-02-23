@@ -8,24 +8,10 @@
         state: touch
       become: true
 
-    ---
-- name: Create a File with Ansible and Print IP Address
-  hosts: localhost
-  gather_facts: true
-  tasks:
-    - name: Create example.txt
-      file:
-        path: /tmp/example.txt
-        state: touch
-      become: true
-
-    - name: Gather network facts
-      setup:
-        gather_subset:
-          - network
-
     - name: Get localhost IP address
-      debug:
-        msg: "The IP address of localhost is {{ ansible_facts['ansible_all_ipv4_addresses'][0] }}"
-      when: ansible_facts['ansible_all_ipv4_addresses'] | length > 0
+      shell: ifconfig
+      register: ifconfig_result
 
+    - name: Display ifconfig output
+      debug:
+        var: ifconfig_result.stdout
